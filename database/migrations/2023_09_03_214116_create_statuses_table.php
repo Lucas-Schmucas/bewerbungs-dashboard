@@ -19,10 +19,6 @@ return new class extends Migration {
 
         });
         DB::table('statuses')->insert([
-            'label' => 'planed',
-            'color' => 'orange'
-        ]);
-        DB::table('statuses')->insert([
             'label' => 'sent',
             'color' => 'yellow'
         ]);

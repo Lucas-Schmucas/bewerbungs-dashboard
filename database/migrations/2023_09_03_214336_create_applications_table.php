@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('url');
             $table->string('position_name');
-            $table->integer('expected_salary');
-            $table->date('application_sent');
-            $table->date('first_reply');
-            $table->date('interview_date');
-            $table->text('notes');
+            $table->integer('expected_salary')->nullable();
+            $table->date('application_sent')->nullable();
+            $table->date('first_reply')->nullable();
+            $table->date('interview_date')->nullable();
+            $table->text('notes')->nullable();
             $table->foreignId('status_id')->constrained('statuses');
         });
     }

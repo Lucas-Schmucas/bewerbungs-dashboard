@@ -3,9 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ApplicationResource\Pages;
-use App\Filament\Resources\ApplicationResource\RelationManagers;
 use App\Models\Application;
-use Filament\Forms;
+use App\Models\Status;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -13,11 +12,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ApplicationResource extends Resource
 {
@@ -56,6 +52,7 @@ class ApplicationResource extends Resource
 
     public static function table(Table $table): Table
     {
+        $labelColors = Status::labelColors();
         return $table
             ->columns([
                 TextColumn::make('company_name')->searchable(),
@@ -67,7 +64,11 @@ class ApplicationResource extends Resource
                     ->date(),
                 TextColumn::make('interview_date')
                     ->date(),
-                SelectColumn::make('status_id')
+                TextColumn::make('status.label')
+                    ->badge()
+                    ->color(static function ($state) use ($labelColors): string {
+                        return $labelColors[$state];
+                    })
             ])
             ->filters([
                 //

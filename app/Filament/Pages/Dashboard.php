@@ -1,8 +1,9 @@
 <?php
 
-namespace Filament\Pages;
+namespace App\Filament\Pages;
 
 use Filament\Facades\Filament;
+use Filament\Pages\Page;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Widgets\Widget;
@@ -14,9 +15,6 @@ class Dashboard extends Page
 {
     protected static ?int $navigationSort = -2;
 
-    /**
-     * @var view-string
-     */
     protected static string $view = 'filament-panels::pages.dashboard';
 
     public static function getNavigationLabel(): string

@@ -11,6 +11,12 @@ class Status extends Model
 {
     use HasFactory;
 
+    public const SENT = 1;
+    public const PREPARING_FOR_INTERVIEW = 2;
+    public const PENDING_AFTER_INTERVIEW = 3;
+    public const ACCEPTED = 4;
+    public const DECLINED = 5;
+
     protected $table = 'statuses';
 
     public function application() : HasMany

@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "php artisan serve --port 8880 & vite --port 8800",
         "build": "vite build"
     },
     "devDependencies": {

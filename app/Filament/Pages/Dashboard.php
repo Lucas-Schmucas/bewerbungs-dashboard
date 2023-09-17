@@ -11,7 +11,7 @@ use Filament\Widgets\WidgetConfiguration;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Route;
 
-class Dashboard extends Page
+class Dashboard extends \Filament\Pages\Dashboard
 {
     protected static ?int $navigationSort = -2;
 

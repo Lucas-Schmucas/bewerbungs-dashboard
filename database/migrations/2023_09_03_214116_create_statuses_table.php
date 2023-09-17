@@ -20,23 +20,23 @@ return new class extends Migration {
         });
         DB::table('statuses')->insert([
             'label' => 'sent',
-            'color' => 'yellow'
+            'color' => 'gray'
         ]);
         DB::table('statuses')->insert([
-            'label' => 'interview_date',
-            'color' => 'light-blue'
+            'label' => 'preparing for interview',
+            'color' => 'warning'
         ]);
         DB::table('statuses')->insert([
-            'label' => 'pending_after_interview',
-            'color' => 'sapphire'
+            'label' => 'pending after interview',
+            'color' => 'info'
         ]);
         DB::table('statuses')->insert([
             'label' => 'accepted',
-            'color' => 'green'
+            'color' => 'success'
         ]);
         DB::table('statuses')->insert([
             'label' => 'declined',
-            'color' => 'red'
+            'color' => 'danger'
         ]);
 
 

@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Status;
-use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

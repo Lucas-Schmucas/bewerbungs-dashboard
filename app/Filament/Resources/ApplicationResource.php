@@ -40,8 +40,6 @@ class ApplicationResource extends Resource
                     ->integer(),
                 DatePicker::make('application_sent')
                     ->date(),
-                DatePicker::make('first_reply')
-                    ->date(),
                 DatePicker::make('interview_date')
                     ->date(),
                 Select::make('status_id')
@@ -59,8 +57,6 @@ class ApplicationResource extends Resource
                 TextColumn::make('position_name')->searchable(),
                 TextColumn::make('expected_salary'),
                 TextColumn::make('application_sent')
-                    ->date(),
-                TextColumn::make('first_reply')
                     ->date(),
                 TextColumn::make('interview_date')
                     ->date(),

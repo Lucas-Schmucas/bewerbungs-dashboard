@@ -10,13 +10,9 @@ class NextInterviewWidget extends BaseWidget
 {
     protected function getStats(): array
     {
+        $interviewDate = Application::getNextInterview();
         return [
-            Stat::make('Next Interview', $this->getNextInterview()),
-        ];
-    }
-
-    private function  getNextInterview() : string
-    {
-        return Application::getNextInterview();
+                Stat::make('Next Interview', $interviewDate),
+            ];
     }
 }

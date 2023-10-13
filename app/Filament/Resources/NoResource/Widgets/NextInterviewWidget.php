@@ -23,7 +23,10 @@ class NextInterviewWidget extends BaseWidget
         $date = new InterviewDate($interviewDate);
 
         return [
-                Stat::make('Next Interview', $interviewDate),
-            ];
+                Stat::make('Next Interview', $date->readable())
+                    ->description($date->timeLeft() )
+                    ->descriptionColor('success')
+                    ->descriptionIcon('heroicon-m-arrow-trending-up')
+        ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,8 +24,7 @@ class ApplicationFactory extends Factory
         ];
 
         return [
-            'company_name' => fake()->company,
-            'url' => fake()->url,
+            'company_id' => Company::factory(),
             'position_name' => fake()->jobTitle,
             'expected_salary' => fake()->numberBetween(50000, 70000),
             'application_sent' => fake()->dateTimeBetween('-1 week', 'now'),

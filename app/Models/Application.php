@@ -17,7 +17,12 @@ class Application extends Model
         return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 
-    public static function getNextInterview(): string | null
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public static function getNextInterview(): string|null
     {
         $application = DB::table('applications')->where('interview_date', '>', today())->first();
 

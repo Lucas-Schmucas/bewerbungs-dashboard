@@ -1,5 +1,7 @@
 # Planed Features
 
+---
+
 ## Distance
 - Map with company locations
 - Link to open-street-map

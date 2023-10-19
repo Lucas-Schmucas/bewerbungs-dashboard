@@ -19,19 +19,16 @@ class ApplicationResource extends Resource
 {
     protected static ?string $model = Application::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-document-text';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('company_name')
-                    ->string()
+                Select::make('company_id')
+                    ->relationship('company', 'name')
                     ->required(),
                 TextInput::make('position_name')
-                    ->string()
-                    ->required(),
-                TextInput::make('url')
                     ->string()
                     ->required(),
                 Textarea::make('notes')
@@ -52,22 +49,24 @@ class ApplicationResource extends Resource
     {
         $labelColors = Status::labelColors();
         return $table
+            ->defaultSort('status.label', 'desc')
             ->columns([
-                TextColumn::make('company_name')->searchable(),
-                TextColumn::make('position_name')->searchable(),
-                TextColumn::make('expected_salary'),
+                TextColumn::make('company.name'),
+                TextColumn::make('expected_salary')
+                    ->label('Expected Salary (brutto, p. a.)')
+                    ->sortable(),
                 TextColumn::make('application_sent')
-                    ->date(),
+                    ->date()
+                    ->sortable(),
                 TextColumn::make('interview_date')
-                    ->date(),
+                    ->date()
+                    ->sortable(),
                 TextColumn::make('status.label')
+                    ->sortable()
                     ->badge()
                     ->color(static function ($state) use ($labelColors): string {
                         return $labelColors[$state];
                     })
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -79,7 +78,9 @@ class ApplicationResource extends Resource
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
-            ]);
+            ])
+            ->defaultPaginationPageOption(25);
+
     }
 
     public static function getRelations(): array

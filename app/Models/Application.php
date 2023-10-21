@@ -26,6 +26,6 @@ class Application extends Model
     {
         $application = DB::table('applications')->where('interview_date', '>', today())->first();
 
-        return $application->interview_date;
+        return $application?->interview_date;
     }
 }

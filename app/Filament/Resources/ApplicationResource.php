@@ -53,7 +53,7 @@ class ApplicationResource extends Resource
             ->columns([
                 TextColumn::make('company.name'),
                 TextColumn::make('expected_salary')
-                    ->label('Expected Salary (brutto, p. a.)')
+                    ->label('Expected Salary p.a.')
                     ->sortable(),
                 TextColumn::make('application_sent')
                     ->date()
